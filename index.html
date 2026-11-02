@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Weds Amarjyoti - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --gold: #c5a059;
+            --bg-color: #fdfbf7;
+            --text-dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background: #fff;
+            position: relative;
+        }
+
+        /* Decorative corners */
+        .container::before, .container::after {
+            content: '❦';
+            font-size: 24px;
+            color: var(--gold);
+            position: absolute;
+            top: 10px;
+        }
+        .container::before { left: 10px; }
+        .container::after { right: 10px; }
+
+        .ganesh {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .ganesh-img {
+            width: 60px;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .invite-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: var(--primary-color);
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .names span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .parents-details {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .parents-details h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Scratch Card Section */
+        .scratch-section {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 40px 20px;
+            margin: 30px -20px;
+            border-radius: 10px;
+        }
+        
+        .scratch-card {
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            position: relative;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            color: var(--primary-color);
+        }
+
+        .scratch-reveal {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scratch-reveal h3 { font-size: 24px; margin-bottom: 5px; }
+        .scratch-reveal p { font-size: 14px; }
+
+        #scratch-canvas {
+            position: absolute;
+            top: 0; left: 0; cursor: crosshair;
+        }
+
+        /* Events Section */
+        .events-section {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .events-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .event-card {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #ccc;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: var(--gold);
+            min-width: 120px;
+        }
+
+        .event-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .event-time {
+            text-align: right;
+            min-width: 120px;
+        }
+
+        /* Venue Section */
+        .venue-section {
+            background: #f4f1ea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .venue-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            font-size: 12px;
+            line-height: 1.8;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .footer h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .names { font-size: 36px; flex-direction: column; gap: 5px; }
+            .parents-details { flex-direction: column; gap: 20px; }
+            .event-card { flex-direction: column; text-align: center; gap: 5px; }
+            .event-date, .event-time { text-align: center; min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="ganesh">!! Ganeshai Namah !!</div>
+        <!-- Ganesh Image placeholder -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Ganesha_Basohli_cropped.jpg/240px-Ganesha_Basohli_cropped.jpg" alt="Ganesh Ji" class="ganesh-img">
+
+        <p class="invite-text">
+            Two Tender Hearts Are Being Merged Into<br>One In Pure Love And Affection
+        </p>
+
+        <h1 class="names">
+            Amarjyoti <span>Weds</span> Deepak
+        </h1>
+
+        <div class="parents-details">
+            <div>
+                <h4>Amarjyoti</h4>
+                D/o Smt. Krishna Devi &<br>Sh. Ramphal Jhakal (B.D.O.)
+            </div>
+            <div>
+                <h4>Deepak</h4>
+                S/o Smt. Krishna Devi &<br>Sh. Ramchander Ji Kayat
+            </div>
+        </div>
+
+        <!-- Scratch Card -->
+        <div class="scratch-section">
+            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">Golden Moments</h3>
+            <p style="font-size: 12px; margin-bottom: 20px;">Scratch to reveal the dates</p>
+            
+            <div class="scratch-card" id="scratch-card">
+                <div class="scratch-reveal">
+                    <h3>11 & 12 December 2026</h3>
+                    <p>Friday & Saturday</p>
+                    <p style="margin-top: 10px; font-weight: bold;">Swami Mandi</p>
+                </div>
+                <canvas id="scratch-canvas" width="300" height="150"></canvas>
+            </div>
+        </div>
+
+        <!-- Events -->
+        <div class="events-section">
+            <h2 class="events-title">The Wedding Festivities</h2>
+            
+            <div class="event-card">
+                <div class="event-date">11 Dec 2026</div>
+                <div class="event-name">Nikaashi</div>
+                <div class="event-time">05:15 P.M.</div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">12 Dec 2026</div>
+                <div class="event-name">Bhaat</div>
+                <div class="event-time">10:15 A.M.</div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">12 Dec 2026</div>
+                <div class="event-name">Lunch</div>
+                <div class="event-time">12:15 P.M.</div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">12 Dec 2026</div>
+                <div class="event-name">Reception of Baraat</div>
+                <div class="event-time">06:15 P.M.</div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">12 Dec 2026</div>
+                <div class="event-name">Doli (Taaron Ki Chhaon Mein)</div>
+                <div class="event-time">06:15 P.M.</div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">12 Dec 2026</div>
+                <div class="event-name">Departure of Baraat</div>
+                <div class="event-time">06:15 P.M.</div>
+            </div>
+        </div>
+
+        <!-- Venue -->
+        <div class="venue-section">
+            <h3>Venue</h3>
+            <p><strong>Shree Krishna Pranami Dharamshala</strong></p>
+            <p>Rupana Road, Swami Mandi</p>
+        </div>
+
+        <!-- Footer / Invitation Details -->
+        <div class="footer">
+            <p>A Special Invitations From Little Stars :-</p>
+            <p><strong>Sudesh, Arman, Divya, Bharti, Nandini</strong></p>
+            
+            <h4>With Best Compliments From</h4>
+            <p><strong>Darbar Transport Co., Ludhiana</strong></p>
+            <p>Sh. Johari Mal, Nihal Singh, Dr. Ramkumar, Mangeram, Satbir (Ex.Sarpanch), Rahul, Shivraj, Himanshu, Shubham & All Jhakal Family, Relatives & Friends</p>
+
+            <div class="contact-info">
+                <p>📞 9357610780, 8872710780, 9988420780, 9041910780</p>
+                <p>Smt. Parmeshwari Devi (W/o Late Sh. Chunnilal Jhakal) & Family</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scratch Card Logic -->
+    <script>
+        const canvas = document.getElementById('scratch-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fill canvas with gold color
+        ctx.fillStyle = '#c5a059';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Add text
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 20px Montserrat';
+        ctx.textAlign = 'center';
+        ctx.fillText('Scratch Here', canvas.width/2, canvas.height/2 + 5);
+
+        let isDrawing = false;
+
+        function getMousePos(canvas, evt) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+            const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function scratch(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const pos = getMousePos(canvas, e);
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Mouse events
+        canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+        canvas.addEventListener('mousemove', scratch);
+        canvas.addEventListener('mouseup', () => { isDrawing = false; });
+        canvas.addEventListener('mouseout', () => { isDrawing = false; });
+
+        // Touch events
+        canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
+        canvas.addEventListener('touchmove', scratch);
+        canvas.addEventListener('touchend', () => { isDrawing = false; });
+    </script>
+</body>
+</html>
